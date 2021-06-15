@@ -20,6 +20,7 @@ The files attached to the project are:
 - Browser must be able to support WebGL for the graphics to work
 - written in ES6, might fail to work in old browsers
 - Browser WebGL must support atleast 2 textures to work
+- The html must be hosted locally for proper image loading
 
 ## Developer contact
 - Gmail: [majirouvik@gmail.com](mailto:majirouvik@gmail.com)
