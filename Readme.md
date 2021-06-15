@@ -3,8 +3,8 @@ _Copyright ©️ all rights reserved
 by Rouvik Maji_
 
 ## Description
-This project was aimed to make a simple 3D planet with similar visual qualities like Earth
-To bring a miniature Earth right at your browser screen
+This project was aimed to make a simple 3D planet with similar visual qualities like Earth  
+bringing a miniature Earth right at your browser screen
 
 ##  Files
 The files attached to the project are:
