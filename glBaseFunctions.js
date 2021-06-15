@@ -212,10 +212,10 @@ class GLScriptHandler
   }
 }
 
-/* defines GL objects with easiness and no ambiguity unlike its old counterparts
+/* defines GL objects easily
  it is expandable and can pass any number of data
  automatic function generation for best performance and reliability
- simple definition for users
+ Here is an example so that I do not forget later
  GlObj definition system:
  {
    options:{
