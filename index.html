@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas>
+    Oops canvas is not available in your device
+  </canvas><br>
+  <input type="text" placeholder="Calculating..." readonly><br><br>
+  <label style="color:#0AF678">Light Speed: </label><input type="range" min="0.01" step="0.05" max="2" value="0.05" oninput="lchange=this.value;lsp.value=this.value;"/><input type="text" id="lsp" value="0.05" readonly/><br>
+  <p>3D Earth</p>
+  <p>Created by Rouvik Maji on 9th June, 2021 4:01am IST</p>
+  <p>Copyright ©️ all rights reserved</p>
+  <p>Read the Readme.md for more details</p>
+  <h1><p>Slide to rotate!</p></h1>
+</body>
+<script src="sphere.json"></script>
+<script type="text/v-shader">
+attribute vec3 coordinates;
+attribute vec3 normals;
+attribute vec2 texpos;
+uniform vec2 eAngle;
+uniform float lAngle;
+ float eangXSin = sin(radians(eAngle.x)),
+       eangXCos = cos(radians(eAngle.x)),
+       eangYSin = sin(radians(eAngle.y)),
+       eangYCos = cos(radians(eAngle.y)),
+       langSin = sin(radians(lAngle)),
+       langCos = cos(radians(lAngle));
+ mat3 erotX = mat3(
+          1, 0, 0,
+          0, eangXCos, -eangXSin,
+          0, eangXSin, eangXCos
+      ),
+      erotY = mat3(
+          eangYCos,0, eangYSin,
+          0,1,0,
+          -eangYSin,0,eangYCos
+      ),
+      lrotY = mat3(
+        langCos,0, langSin,
+        0,1,0,
+        -langSin,0,langCos
+      );
+ varying vec3 coord;
+ varying vec3 norm;
+ varying vec2 texCoord;
+ void main(void)
+ {
+   norm = lrotY * normals;
+   coord = erotX * coordinates;
+   coord = erotY * coord;
+   gl_Position = vec4(coord, 5.0);
+   texCoord = texpos;
+ }
+</script>
+<script type="text/f-shader">
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+uniform sampler2D imageDay;
+uniform sampler2D imageNight;
+uniform vec3 lightPos;
+varying vec3 norm;
+varying vec2 texCoord;
+void main(void)
+{
+  float ndot = dot(normalize(lightPos), norm),
+        diffuse = max(abs(ndot), 0.01);
+  vec3 a = texture2D(imageDay, texCoord).rgb * diffuse + 0.1,
+       b = texture2D(imageNight, texCoord).rgb * diffuse + 0.1;
+  gl_FragColor = vec4(ndot > 0.0 ? a : b, 1.0);
+}
+</script>
+<script src="./glBaseFunctions.js"></script>
+<script src="./main.js"></script>
+</html>
