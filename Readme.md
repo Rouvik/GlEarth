@@ -1,6 +1,5 @@
 #  Earth
-_Copyright ©️ all rights reserved
-by Rouvik Maji_
+_A basic animated earth for browser_
 
 ## Description
 This project was aimed to make a simple 3D planet with similar visual qualities like Earth  
@@ -24,3 +23,5 @@ The files attached to the project are:
 
 ## Developer contact
 - Gmail: [majirouvik@gmail.com](mailto:majirouvik@gmail.com)
+
+Copyright (C) all rights reserved Rouvik Maji 2021
