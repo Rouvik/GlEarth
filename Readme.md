@@ -23,5 +23,3 @@ The files attached to the project are:
 
 ## Developer contact
 - Gmail: [majirouvik@gmail.com](mailto:majirouvik@gmail.com)
-
-Copyright (C) all rights reserved Rouvik Maji 2021
